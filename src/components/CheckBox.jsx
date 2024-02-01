@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-const Checkbox = ({timeSlot}) => {
+const Checkbox = ({day,date,timeSlot}) => {
   const time = [
     "8:00 AM",
     "8:30 AM",
@@ -33,10 +33,11 @@ const Checkbox = ({timeSlot}) => {
     "10:30 PM",
     "11:00 PM",
   ];
+  console.log(date,day)
   return (
     <>
       {time.map((value, key) => {
-        const isChecked = timeSlot.some((val) => val.time === value);
+        const isChecked = timeSlot.some((val) => val.time === value && val.date===date && val.day===day);
 
         return (
           <div key={key}>
@@ -55,5 +56,7 @@ const Checkbox = ({timeSlot}) => {
 };
 Checkbox.propTypes = {
   timeSlot: PropTypes.array.isRequired,
+  day: PropTypes.array.isRequired,
+  date: PropTypes.array.isRequired,
 };
 export default Checkbox;

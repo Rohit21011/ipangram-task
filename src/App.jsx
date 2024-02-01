@@ -12,17 +12,9 @@ function App() {
 
   useEffect(() => {
     // Fetch initial data from JSON file when the component mounts
-    fetchInitialData();
-  }, [currentDate]);
+    setPreselectedTimeSlots(data);
+  }, []);
 
-  const fetchInitialData = async () => {
-    try {
-     
-      setPreselectedTimeSlots(data);
-    } catch (error) {
-      console.error('Error fetching initial data:', error);
-    }
-  };
   const handleNextButtonClick = () => {
     // Increment current date by one week
     const nextWeek = new Date(currentDate);
@@ -104,7 +96,7 @@ console.log(preselectedTimeSlots)
                   <p>{day}</p>
                 </div>
                 <div className='check'>
-                <Checkbox day={day} timeSlot={preselectedTimeSlots}/>
+                <Checkbox day={day} date={currentDate} timeSlot={preselectedTimeSlots}/>
                 </div>
               </div>
             ))}
